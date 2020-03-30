@@ -17,6 +17,7 @@ $.fn.loadNavbar = function (activeNavItem = navItems.About) {
     for (navKey in navItems) {
         var $thisNavItem = $(navTemplateHtml);
         $thisNavItem.find('a').attr('href', navItems[navKey]);
+        $thisNavItem.find('a').text(navKey);
         if (activeNavItem === navItems[navKey]) {
             $thisNavItem.addClass('active');
         }
