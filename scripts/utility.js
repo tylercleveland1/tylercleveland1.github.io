@@ -9,13 +9,13 @@ $.fn.loadNavbar = function (activeNavItem = navItems.About) {
     $navContainer.empty();
     $navContainer.load('/navbar-template.html');
 
-    var $navTemplate = $navContainer.find('[nav-template]');
+    var navTemplateHtml = $navContainer.find('[nav-template]').prop('outerHTML');
     var $navUl = $navTemplate.closest('ul');
 
     $navUl.empty();
 
     for (navKey in navItems) {
-        var $thisNavItem = $navTemplate.clone();
+        var $thisNavItem = $(navTemplateHtml);
         $thisNavItem.find('a').attr('href', navItems[navKey]);
         if (activeNavItem === navItems[navKey]) {
             $thisNavItem.addClass('active');
