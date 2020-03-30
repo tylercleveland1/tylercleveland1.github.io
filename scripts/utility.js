@@ -6,7 +6,6 @@ var navItems = {
 
 $.fn.loadNavbar = function (activeNavItem = navItems.About) {
     var $navContainer = $(this);
-    $navContainer.load('/navbar-template.html');
 
     var $navTemplate = $navContainer.find('[nav-template]');
     var navTemplateHtml = $navTemplate.prop('outerHTML');
@@ -14,6 +13,7 @@ $.fn.loadNavbar = function (activeNavItem = navItems.About) {
 
     $navUl.empty();
     $navContainer.empty();
+    $navContainer.load('/navbar-template.html');
 
     for (navKey in navItems) {
         var $thisNavItem = $(navTemplateHtml);
