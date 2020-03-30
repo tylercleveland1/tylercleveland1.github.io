@@ -8,10 +8,10 @@ bs.setAttribute('src', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bo
 var bscss = document.createElement('link');
 bscss.setAttribute('href', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css');
 
-document.appendChild(jq);
-document.appendChild(popper);
-document.appendChild(bs);
-document.appendChild(bscss);
+document.body.appendChild(jq);
+document.body.appendChild(popper);
+document.body.appendChild(bs);
+document.body.appendChild(bscss);
 
 var navItems = {
     About: '/index.html'
