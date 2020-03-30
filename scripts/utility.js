@@ -9,7 +9,8 @@ $.fn.loadNavbar = function (activeNavItem = navItems.About) {
     $navContainer.empty();
     $navContainer.load('/navbar-template.html');
 
-    var navTemplateHtml = $navContainer.find('[nav-template]').prop('outerHTML');
+    var $navTemplateHtml = $navContainer.find('[nav-template]');
+    var navTemplateHtml = $navTemplateHtml.prop('outerHTML');
     var $navUl = $navTemplate.closest('ul');
 
     $navUl.empty();
