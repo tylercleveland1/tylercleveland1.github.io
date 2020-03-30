@@ -11,14 +11,14 @@ $.fn.loadNavbar = function (activeNavItem = navItems.About) {
 
     var $navTemplate = $navContainer.find('[nav-template]');
     var $navUl = $navTemplate.closest('ul');
-    
+
     $navUl.empty();
 
     for (navKey in navItems) {
         var $thisNavItem = $navTemplate.clone();
         $thisNavItem.find('a').attr('href', navItems[navKey]);
         if (activeNavItem === navItems[navKey]) {
-            thisNavItem.addClass('active');
+            $thisNavItem.addClass('active');
         }
         $navUl.append($thisNavItem);
     }
