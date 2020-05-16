@@ -11,12 +11,37 @@
         <div id="divNav">
         </div>
         
-        <span>No Projects here yet!</span>
+        <div class="project-selector card mx-auto" style="width: 45%;">
+            <div class="card-body">
+                <ul>
+                    <li>
+                        <a href="#" class="lnk-load-project btn">Regressor using Fourier Series</a>
+                    </li>
+                    <li>
+                        <a href="#" class="lnk-load-project btn">Applying Artificial Neural Networks for Human Activity Recognition</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="project-container card mx-auto" style="width: 75%; height: 100%; display: none;">
+            <h5 class="card-title"><a href="/projects.html"><i class="fa fa-arrow-left"></i>Return</a></h5>
+            <div class="card-body" style="overflow-y: scroll; height: 100%;">
+                <div class="project-body" style="height: 100%;">
+                    <span>My Proj here</span>
+                </div>
+            </div>
+        </div>
     </body>
     <script>
         $(document).ready(function () {
             var $divNav = $('#divNav');
             $divNav.loadNavbar(activeNavItem=navItems.Projects);
+
+            $('.lnk-load-project').on('click', function () {
+                var $projectContainer = $('.project-container');
+                var $projectSelector = $('.project-selector');
+                var $projectBody = $('.project-body');
+            });
         });
     </script>
 </html>

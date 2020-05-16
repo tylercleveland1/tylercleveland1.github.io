@@ -1,6 +1,6 @@
 var navItems = {
     About: '/index.html'
-    , Projects: '/projects.html'
+    , 'Projects/Work': '/projects.html'
     , Contact: '/contact.html'
 }
 
