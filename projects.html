@@ -8,23 +8,27 @@
     <head>
     </head>
     <body class="bg-light">
+        <style>
+            .project-body, .project-container, .project-selector {
+                margin-top: 15px;
+            }
+        </style>
         <div id="divNav">
         </div>
         
         <div class="project-selector card mx-auto" style="width: 45%;">
             <div class="card-body">
-                <ul>
+                <ul id="ulProjectList" style="list-style: none;">
                     <li>
-                        <a href="#" class="lnk-load-project btn">Regressor using Fourier Series</a>
-                    </li>
-                    <li>
-                        <a href="#" class="lnk-load-project btn">Applying Artificial Neural Networks for Human Activity Recognition</a>
+                        <a href="#" class="lnk-load-project btn"></a>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="project-container card mx-auto" style="width: 75%; height: 100%; display: none;">
-            <h5 class="card-title"><a href="/projects.html"><i class="fa fa-arrow-left"></i>Return</a></h5>
+            <h5 class="card-title">
+                <a id="lnk-nav-back" href="#"><i class="fa fa-arrow-left"></i>Return</a>
+            </h5>
             <div class="card-body" style="overflow-y: scroll; height: 100%;">
                 <div class="project-body" style="height: 100%;">
                     <span>My Proj here</span>
@@ -33,14 +37,43 @@
         </div>
     </body>
     <script>
+        var projects = [
+            {
+                title: 'Regression Using Fourier Series'
+                , htmllink: '/projects/fourier-regressor.html'
+            }
+            , {
+                title: 'Applying Artificial Neural Networks for Human Activity Recognition'
+                , htmllink: '/projects/ann-har.html'
+            }
+        ]
+
         $(document).ready(function () {
             var $divNav = $('#divNav');
-            $divNav.loadNavbar(activeNavItem=navItems.Projects);
+            var navController = $divNav.loadNavbar(activeNavItem=navItems.Projects);
+
+            //load project list
+            var $ulProjectList = $('#ulProjectList');
+            var $liTemplate = ulProjectList.find('li:first');
+            var liTemplateHtml = $liTemplate.prop('outerHTML');
+            $liTemplate.remove();
+            for (var project in projects) {
+                var $li = $(liTemplateHtml);
+                $li.attr('htmllink', project.htmllink);
+                $li.text(project.title);
+                $ulProjectList.append($li);
+            }
+
+            $('#lnk-nav-back').on('click', function () { 
+
+            });
 
             $('.lnk-load-project').on('click', function () {
                 var $projectContainer = $('.project-container');
                 var $projectSelector = $('.project-selector');
                 var $projectBody = $('.project-body');
+
+                // $projectContainer.
             });
         });
     </script>
