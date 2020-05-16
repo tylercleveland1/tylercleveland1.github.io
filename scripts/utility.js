@@ -13,7 +13,7 @@ $.fn.loadNavbar = function (activeNavItem = navItems.About) {
 
         $navUl.empty();
 
-        for (navKey in navItems) {
+        for (var navKey in navItems) {
             var $thisNavItem = $(navTemplateHtml);
             $thisNavItem.find('a').attr('href', navItems[navKey]);
             $thisNavItem.find('a').text(navKey);
