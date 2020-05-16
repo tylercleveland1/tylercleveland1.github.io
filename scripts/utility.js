@@ -3,10 +3,10 @@ var navItems = {
         title: 'About'
         , htmllink: '/index.html'
     }
-    , Projects: {
-        title: 'Projects & Works'
-        , htmllink: '/projects.html'
-    }
+    // , Projects: {
+    //     title: 'Projects & Works'
+    //     , htmllink: '/projects.html'
+    // }
     , Resume: {
         title: 'Resume'
         , htmllink: '/static/TylerClevelandResume.pdf'
