@@ -79,7 +79,9 @@
                 $projectSelector.find('#divProjectList > a.active').removeClass('active');
                 $activeLink.addClass('active');
 
-                $projectBody.load($activeLink.attr('htmllink'));
+                $projectBody.load($activeLink.attr('htmllink'), function () {
+                    $projectContainer.find('.card-title').text($activeLink.text());
+                });
             });
 
             //trigger click on first nav item
