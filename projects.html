@@ -3,35 +3,41 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="/scripts/utility.js"></script>
+    <!-- <script src="/scripts/utility.js"></script> -->
 
     <head>
     </head>
     <body class="bg-light">
         <style>
-            .project-body, .project-container, .project-selector {
+            .card {
                 margin-top: 15px;
+            }
+
+            .card-title {
+                padding-left: 25px;
+                padding-top: 25px;
             }
         </style>
         <div id="divNav">
         </div>
         
-        <div class="project-selector card mx-auto" style="width: 45%;">
+        <div class="project-selector card mx-auto" style="width: 70%;">
+            <h5 class="card-title">
+                Projects
+            </h5>
             <div class="card-body">
-                <ul id="ulProjectList" style="list-style: none;">
-                    <li>
-                        <a href="#" class="lnk-load-project btn"></a>
-                    </li>
-                </ul>
+                <div id="divProjectList" class="list-group">
+                    <a href="#" class="lnk-load-project list-group-item list-group-item-action"></a>
+                </div>
             </div>
         </div>
-        <div class="project-container card mx-auto" style="width: 75%; height: 100%; display: none;">
+        <div class="project-container card mx-auto" style="width: 70%; min-height: 50px;">
             <h5 class="card-title">
-                <a id="lnk-nav-back" href="#"><i class="fa fa-arrow-left"></i>Return</a>
+                Loading Project...
             </h5>
-            <div class="card-body" style="overflow-y: scroll; height: 100%;">
+            <div class="card-body">
                 <div class="project-body" style="height: 100%;">
-                    <span>My Proj here</span>
+                    
                 </div>
             </div>
         </div>
@@ -50,31 +56,34 @@
 
         $(document).ready(function () {
             var $divNav = $('#divNav');
-            var navController = $divNav.loadNavbar(activeNavItem=navItems.Projects);
+            // var navController = $divNav.loadNavbar(activeNavItem=navItems.Projects);
 
             //load project list
-            var $ulProjectList = $('#ulProjectList');
-            var $liTemplate = ulProjectList.find('li:first');
-            var liTemplateHtml = $liTemplate.prop('outerHTML');
-            $liTemplate.remove();
-            for (var project in projects) {
-                var $li = $(liTemplateHtml);
-                $li.attr('htmllink', project.htmllink);
-                $li.text(project.title);
-                $ulProjectList.append($li);
+            var $divProjectList = $('#divProjectList');
+            var $aTemplate = $divProjectList.find('a:first');
+            var aTemplateHtml = $aTemplate.prop('outerHTML');
+            $aTemplate.remove();
+            for (var pIdx in projects) {
+                var $a = $(aTemplateHtml);
+                $divProjectList.append($a);
+                $a.attr('htmllink', projects[pIdx].htmllink);
+                $a.text(projects[pIdx].title);
             }
-
-            $('#lnk-nav-back').on('click', function () { 
-
-            });
 
             $('.lnk-load-project').on('click', function () {
                 var $projectContainer = $('.project-container');
                 var $projectSelector = $('.project-selector');
                 var $projectBody = $('.project-body');
 
-                // $projectContainer.
+                var $activeLink = $(this);
+                $projectSelector.find('#divProjectList > a.active').removeClass('active');
+                $activeLink.addClass('active');
+
+                $projectBody.load($activeLink.attr('htmllink'));
             });
+
+            //trigger click on first nav item
+            $('.project-selector #divProjectList > a:first').trigger('click');
         });
     </script>
 </html>
