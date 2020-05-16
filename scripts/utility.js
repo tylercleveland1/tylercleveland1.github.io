@@ -7,6 +7,10 @@ var navItems = {
         title: 'Projects & Works'
         , htmllink: '/projects.html'
     }
+    , Resume: {
+        title: 'Resume'
+        , htmllink: '/static/TylerClevelandResume.pdf'
+    }
     , Contact: {
         title: 'Contact'
         , htmllink: '/contact.html'

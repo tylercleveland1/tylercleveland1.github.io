@@ -8,10 +8,29 @@
     <head>
     </head>
     <body class="bg-light">
+        <style>
+            .card {
+                margin-top: 15px;
+            }
+
+            .card-title {
+                padding-left: 25px;
+                padding-top: 25px;
+            }
+        </style>
         <div id="divNav">
         </div>
         
-        <span>No Contact Info here yet!</span>
+        <div class="project-selector card mx-auto" style="width: 70%;">
+            <h5 class="card-title">
+                Contact Info
+            </h5>
+            <div class="card-body">
+                <div id="divProjectList" class="list-group">
+                    <a href="#" class="lnk-load-project list-group-item list-group-item-action"></a>
+                </div>
+            </div>
+        </div>
     </body>
     <script>
         $(document).ready(function () {
