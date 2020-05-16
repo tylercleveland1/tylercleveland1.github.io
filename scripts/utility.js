@@ -1,7 +1,16 @@
 var navItems = {
-    About: '/index.html'
-    , 'Projects/Work': '/projects.html'
-    , Contact: '/contact.html'
+    About: {
+        title: 'About'
+        , htmllink: '/index.html'
+    }
+    , Projects: {
+        title: 'Projects & Works'
+        , htmllink: '/projects.html'
+    }
+    , Contact: {
+        title: 'Contact'
+        , htmllink: '/contact.html'
+    }
 }
 
 $.fn.loadNavbar = function (activeNavItem = navItems.About) {
@@ -15,8 +24,8 @@ $.fn.loadNavbar = function (activeNavItem = navItems.About) {
 
         for (var navKey in navItems) {
             var $thisNavItem = $(navTemplateHtml);
-            $thisNavItem.find('a').attr('href', navItems[navKey]);
-            $thisNavItem.find('a').text(navKey);
+            $thisNavItem.find('a').attr('href', navItems[navKey].htmllink);
+            $thisNavItem.find('a').text(navItems[navKey].title);
             if (activeNavItem === navItems[navKey]) {
                 $thisNavItem.addClass('active');
             }
