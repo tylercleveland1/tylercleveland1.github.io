@@ -1,12 +1,12 @@
 var navItems = {
     About: {
         title: 'About'
-        , htmllink: '/index.html'
+        , htmllink: '/'
     }
-    // , Projects: {
-    //     title: 'Projects & Works'
-    //     , htmllink: '/projects.html'
-    // }
+    , Projects: {
+        title: 'Projects & Works'
+        , htmllink: '/projects.html'
+    }
     , Resume: {
         title: 'Resume'
         , htmllink: '/static/TylerClevelandResume.pdf'
@@ -16,6 +16,19 @@ var navItems = {
         , htmllink: '/contact.html'
     }
 }
+
+var projects = [
+    {
+        title: 'Regression Using Fourier Series'
+        , htmllink: '/projects/fourier-regressor.html'
+    }
+    // , {
+    //     title: 'Applying Artificial Neural Networks for Human Activity Recognition'
+    //     , htmllink: '/projects/ann-har.html'
+    // }
+]
+
+
 
 $.fn.loadNavbar = function (activeNavItem = navItems.About) {
     var $navContainer = $(this);
