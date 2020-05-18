@@ -20,7 +20,7 @@ var navItems = {
 var projects = [
     {
         title: 'Regression Using Fourier Series (Part 1)'
-        , htmllink: '/projects/fourier-regressor-part1.html'
+        , htmllink: '/projects/fourier-regressor-1.html'
     }
     // , {
     //     title: 'Applying Artificial Neural Networks for Human Activity Recognition'
