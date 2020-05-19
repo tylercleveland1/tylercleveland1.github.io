@@ -25,7 +25,6 @@
             }
 
             .project-body {
-                height: 4000px;
                 width: 100%;
             }
         </style>
@@ -90,7 +89,7 @@
                 $activeLink.addClass('active');
 
                 $.getJSON("https://gist.github.com/tylercleveland1/b78887d8ed035f6133f16971e1b17451.json?callback=?", function(result){
-                    $projectBody.append('<div class="row slide sub-slide-1"><div class="col-xs-offset-1 col-xs-8">' + result.div + '</div></div>');
+                    $projectBody.append('<div class="row slide sub-slide-1"><div class="col-xs-offset-1 col-md-12">' + result.div + '</div></div>');
                     $('head').append('<link rel="stylesheet" href="' + result.stylesheet + '"/>');
                 });
 
