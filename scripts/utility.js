@@ -21,7 +21,8 @@ var navItems = {
 var projects = [
     {
         title: 'Regression Using Fourier Series (Part 1)'
-        , htmllink: '/projects/fourier-regressor/frpart1-2.ipynb'
+        , ipynblink: '/projects/fourier-regressor/frpart1.ipynb'
+        , gistlink: 'https://gist.github.com/tylercleveland1/b78887d8ed035f6133f16971e1b17451.json?callback=?'
     }
     // , {
     //     title: 'Applying Artificial Neural Networks for Human Activity Recognition'
