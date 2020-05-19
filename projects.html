@@ -77,7 +77,7 @@
                 $activeLink.addClass('active');
 
                 $projectBody.load($activeLink.attr('htmllink'), function () {
-                    if (MathJax) {
+                    if (typeof MathJax !== 'undefined') {
                         MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'divProjectBody']);
                     }
 
