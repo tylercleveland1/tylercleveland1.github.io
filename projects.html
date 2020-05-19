@@ -77,7 +77,9 @@
                 $activeLink.addClass('active');
 
                 $projectBody.load($activeLink.attr('htmllink'), function () {
-                    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'divProjectBody']);
+                    if (MathJax) {
+                        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'divProjectBody']);
+                    }
 
                     $projectContainer.find('.card-title').text($activeLink.text());
                 });
