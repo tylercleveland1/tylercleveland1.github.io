@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="/scripts/utility.js"></script>
+    <script src="/scripts/notebook.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
 
     <head>
@@ -76,13 +77,24 @@
                 $projectSelector.find('#divProjectList > a.active').removeClass('active');
                 $activeLink.addClass('active');
 
-                $projectBody.load($activeLink.attr('htmllink'), function () {
-                    if (typeof MathJax !== 'undefined') {
-                        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'divProjectBody']);
-                    }
+                
+
+                $.get($activeLink.attr('htmllink'), function(ipynbStr) {
+                    //notebook.js
+                    var notebook = nb.parse(JSON.parse(ipynbStr));
+                    var rendered = notebook.render();
+                    $projectBody.html(rendered);
 
                     $projectContainer.find('.card-title').text($activeLink.text());
-                });
+                }, 'html');
+
+                // $projectBody.load($activeLink.attr('htmllink'), function () {
+                //     if (typeof MathJax !== 'undefined') {
+                //         MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'divProjectBody']);
+                //     }
+
+                //     $projectContainer.find('.card-title').text($activeLink.text());
+                // });
             });
 
             //trigger click on first nav item
