@@ -6,6 +6,7 @@ var navItems = {
     , Projects: {
         title: 'Projects'
         , htmllink: '/projects.html'
+        , target: "_blank"
     }
     , Resume: {
         title: 'Resume'
@@ -43,6 +44,9 @@ $.fn.loadNavbar = function (activeNavItem = navItems.About) {
             var $thisNavItem = $(navTemplateHtml);
             $thisNavItem.find('a').attr('href', navItems[navKey].htmllink);
             $thisNavItem.find('a').text(navItems[navKey].title);
+            if (navItems[navKey].target) {
+                $thisNavItem.find('a').attr('target', navItems[navKey].target);
+            }
             if (activeNavItem === navItems[navKey]) {
                 $thisNavItem.addClass('active');
             }
