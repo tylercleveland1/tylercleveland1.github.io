@@ -6,49 +6,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="/scripts/utility.js"></script>
     <script src="/scripts/notebook.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 
-    <style>
-        body {
-            font-family: Helvetica Neue, Helvetica, sans-serif;
-            font-size: 14px;
-        }
-
-        #main {
-            width: 99%;
-            max-width: 750px;
-            margin: 0 auto;
-        }
-
-        #header {
-            line-height: 2;
-            margin-bottom: 0.25em;
-            font-weight: bold;
-        }
-
-        #controls {
-            border: 1px dotted #CCC;
-            padding: 0.75em;
-            margin-bottom: 0.5em;
-            background-color: #EEF;
-        }
-
-        #footer {
-            border: 1px dotted #CCC;
-            background-color: #EEF;
-            font-size: 0.8em;
-            padding: 0.5em;
-            text-align: center;
-        }
-
-        #footer a, #footer a:visited {
-            color: #0077EE;
-        }
-    </style>
     <head>
     </head>
     <body class="bg-light">
@@ -82,6 +44,9 @@
                                 Loading Project...
                             </h5>
                             <div class="card-body">
+                                <div class="alert alert-primary" style="padding: 15px;">
+                                    A link to the original .ipynb is <a href="/projects/fourier-regressor/frpart1.ipynb">here</a>
+                                </div>
                                 <div id="divProjectBody" class="project-body" style="overflow-y: auto;">
                                     
                                 </div>
@@ -127,21 +92,11 @@
                     var rendered = notebook.render();
                     $projectBody.html(rendered);
 
-                    // if (typeof MathJax !== 'undefined') {
-                    //     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'divProjectBody']);
-                    // }
                     renderMathInElement($projectBody.get(0), {});
 
                     $projectContainer.find('.card-title').text($activeLink.text());
                 }, 'html');
 
-                // $projectBody.load($activeLink.attr('htmllink'), function () {
-                //     if (typeof MathJax !== 'undefined') {
-                //         MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'divProjectBody']);
-                //     }
-
-                //     $projectContainer.find('.card-title').text($activeLink.text());
-                // });
             });
 
             //trigger click on first nav item
