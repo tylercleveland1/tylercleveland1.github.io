@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
@@ -92,6 +93,7 @@
                     // if (typeof MathJax !== 'undefined') {
                     //     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'divProjectBody']);
                     // }
+                    renderMathInElement($projectBody.get(0), {});
 
                     $projectContainer.find('.card-title').text($activeLink.text());
                 }, 'html');
