@@ -84,18 +84,22 @@
                 $projectSelector.find('#divProjectList > a.active').removeClass('active');
                 $activeLink.addClass('active');
 
-                
+                $.getJSON("https://gist.github.com/tylercleveland1/b78887d8ed035f6133f16971e1b17451.json?callback=?", function(result){
+                    $projectBody.append('<div class="row slide sub-slide-1"><div class="col-xs-offset-1 col-xs-8">' + result.div + '</div></div>');
+                    $('head').append('<link rel="stylesheet" href="' + result.stylesheet + '"/>');
+                });
 
-                $.get($activeLink.attr('htmllink'), function(ipynbStr) {
-                    //notebook.js
-                    var notebook = nb.parse(JSON.parse(ipynbStr));
-                    var rendered = notebook.render();
-                    $projectBody.html(rendered);
 
-                    renderMathInElement($projectBody.get(0), {});
+                // $.get($activeLink.attr('htmllink'), function(ipynbStr) {
+                //     //notebook.js
+                //     var notebook = nb.parse(JSON.parse(ipynbStr));
+                //     var rendered = notebook.render();
+                //     $projectBody.html(rendered);
 
-                    $projectContainer.find('.card-title').text($activeLink.text());
-                }, 'html');
+                //     renderMathInElement($projectBody.get(0), {});
+
+                //     $projectContainer.find('.card-title').text($activeLink.text());
+                // }, 'html');
 
             });
 
