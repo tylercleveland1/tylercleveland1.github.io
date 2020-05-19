@@ -6,11 +6,11 @@ var navItems = {
     , Projects: {
         title: 'Projects'
         , htmllink: '/projects.html'
-        , target: "_blank"
     }
     , Resume: {
         title: 'Resume'
         , htmllink: '/static/TylerClevelandResume.pdf'
+        , target: "_blank"
     }
     , Contact: {
         title: 'Contact'
