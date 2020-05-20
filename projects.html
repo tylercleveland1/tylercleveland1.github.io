@@ -43,9 +43,7 @@
                                 Loading Project...
                             </h5>
                             <div class="card-body">
-                                <div class="alert alert-primary">
-                                    A link to the original .ipynb is <a id="lnkIpynb" href="/projects/fourier-regressor/frpart1.ipynb">here</a>
-                                </div>
+                                <a id="lnkIpynb" class="btn btn-primary" href="" target="_blank">View gist in separate window</a>
                                 <div id="divProjectBody" class="project-body">
                                     
                                 </div>
@@ -84,9 +82,9 @@
                 $projectSelector.find('#divProjectList > a.active').removeClass('active');
                 $activeLink.addClass('active');
 
-                $divProjectList.find('#lnkIpynb').attr('href', $activeLink.attr('ipynblink'));
+                $divProjectList.find('#lnkIpynb').attr('href', $activeLink.attr('gistlink'));
 
-                $.getJSON($activeLink.attr('gistlink'), function(result){
+                $.getJSON($activeLink.attr('gistlink') + '.json?callback=?', function(result){
                     $projectBody.append('<div class="row slide sub-slide-1"><div class="col-xs-offset-1 col-md-12">' + result.div + '</div></div>');
                     $('head').append('<link rel="stylesheet" href="' + result.stylesheet + '"/>');
                     $projectContainer.find('.card-title').text($activeLink.text());
