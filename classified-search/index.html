@@ -82,6 +82,15 @@
 										</label>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label>Sort Order</label>
+                                        <select id="ddlCraigslistSortOrder" class="form-control tc-ddl-craigslist-sortorder">
+											<option selected value="rel">Relevant</option>
+											<option value="date">Newest</option>
+											<option value="priceasc">Price (asc)</option>
+											<option value="pricedsc">Price (desc)</option>
+										</select>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -97,7 +106,16 @@
                                 Marketplace-specific options
                             </div>
                             <div class="card-body" style="padding: 10px;">
-                                <i>Nothing here yet</i>
+                                <div class="form-group">
+                                    <label>Sort Order</label>
+                                    <select id="ddlMarketplaceSortOrder" class="form-control tc-ddl-marketplace-sortorder">
+										<option selected value="best_match">Best Match</option>
+										<option value="distance_ascend">Distance (Ascending)</option>
+										<option value="creation_time_descend">Newest</option>
+										<option value="price_ascend">Price (asc)</option>
+										<option value="price_descend">Price (desc)</option>
+									</select>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -10,6 +10,8 @@ $('document').ready(function() {
     var $chkByOwner = $divSearchPage.find('#chkByOwner');
     var $ddlSearchArea = $divSearchPage.find('#ddlSearchArea');
     var $chkExcludeMotorcycles = $divSearchPage.find('#chkExcludeMotorcycles');
+    var $ddlCraigslistSortOrder = $divSearchPage.find('#ddlCraigslistSortOrder');
+    var $ddlMarketplaceSortOrder = $divSearchPage.find('#ddlMarketplaceSortOrder');
 
     var $btnClear = $divSearchPage.find('#btnClear');
     var $btnSearchMarketplace = $divSearchPage.find('#btnSearchMarketplace');
@@ -26,6 +28,8 @@ $('document').ready(function() {
         $chkByOwner.prop('checked', true);
         $ddlSearchArea.val(searchArea.WestUS);
         $chkExcludeMotorcycles.prop('checked', true);
+        $ddlCraigslistSortOrder.val(craigslistSort.rel);
+        $ddlMarketplaceSortOrder.val(marketplaceSort.bestMatch);
     });
 
     // bind marketplace search
@@ -87,7 +91,11 @@ $('document').ready(function() {
     function buildMarketplaceUrl(templateUrl, searchData) {
         var url = templateUrl.replace(
             queryStringTemplateValue,
-            encodeURIComponent(searchData.searchTerm));
+            encodeURIComponent(searchData.searchTerm)
+        ).replace(
+            sortOrderTemplateValue,
+            searchData.marketplace_sortOrder
+        );
 
         if (searchData.minYear) {
             url += `&minYear=${encodeURIComponent(searchData.minYear)}`
@@ -122,7 +130,11 @@ $('document').ready(function() {
     function buildCraigslistUrl(templateUrl, searchData) {
         var url = templateUrl.replace(
             queryStringTemplateValue,
-            encodeURIComponent(searchData.searchTerm));
+            encodeURIComponent(searchData.searchTerm)
+        ).replace(
+            sortOrderTemplateValue,
+            searchData.craigslist_sortOrder
+        );
 
         if (searchData.minYear) {
             url += `&min_auto_year=${encodeURIComponent(searchData.minYear)}`
@@ -173,6 +185,8 @@ $('document').ready(function() {
             transmission: $ddlTransmission.val(),
             craigslist_byOwner: $chkByOwner.prop('checked'),
             craigslist_excludeMotorcycles: $chkExcludeMotorcycles.prop('checked'),
+            craigslist_sortOrder: $ddlCraigslistSortOrder.val(),
+            marketplace_sortOrder: $ddlMarketplaceSortOrder.val(),
             searchArea: $ddlSearchArea.val()
         }
     }
