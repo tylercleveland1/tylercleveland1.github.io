@@ -58,28 +58,56 @@
                 </div>
             </form>
             <div class="row">
-                <div class="tc-options-box-craigslist">
-                    <div class="tc-options-box-title">
-                        Craigslist-specific options
-                    </div>
-                    <div class="card-body" style="padding: 10px;">
-                        <form>
-                            <div class="form-group" style="margin-bottom: 0px;">
-                                <div class="form-check">
-                                    <input id="chkByOwner" checked class="form-check-input" type="checkbox">
-                                    <label class="form-check-label" for="chkByOwner">
-										By Owner
-									</label>
-                                </div>
+                <div>
+                    <div class="row">
+                        <div class="tc-options-box-craigslist">
+                            <div class="tc-options-box-title">
+                                Craigslist-specific options
                             </div>
-                        </form>
+                            <div class="card-body" style="padding: 10px;">
+                                <form>
+                                    <div class="form-group" style="margin-bottom: 0px;">
+                                        <div class="form-check">
+                                            <input id="chkByOwner" checked class="form-check-input" type="checkbox">
+                                            <label class="form-check-label" for="chkByOwner">
+											By Owner
+										</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style="margin-bottom: 0px;">
+                                        <div class="form-check">
+                                            <input id="chkExcludeMotorcycles" checked class="form-check-input" type="checkbox">
+                                            <label class="form-check-label" for="chkExcludeMotorcycles">
+											Exclude Motorcycles
+										</label>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button id="btnSearchCraigslist" class="btn btn-primary tc-btn-search">Search All Craigslist</button>
+                    </div>
+                </div>
+                <div style="padding-left: 30px;">
+                    <div class="row">
+                        <div class="tc-options-box-marketplace">
+                            <div class="tc-options-box-title">
+                                Marketplace-specific options
+                            </div>
+                            <div class="card-body" style="padding: 10px;">
+                                <i>Nothing here yet</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button id="btnSearchMarketplace" class="btn btn-primary tc-btn-search">Search All Marketplace</button>
                     </div>
                 </div>
             </div>
             <div class="row" style="padding-top: 25px;">
-                <button id="btnClear" class="btn btn-warning tc-btn-clear">Clear</button>
-                <button id="btnSearchMarketplace" class="btn btn-primary tc-btn-search">Search All Marketplace</button>
-                <button id="btnSearchCraigslist" class="btn btn-primary tc-btn-search">Search All Craigslist</button>
+                <button id="btnClear" class="btn btn-outline-danger tc-btn-clear">Reset Parameters</button>
             </div>
         </div>
     </div>

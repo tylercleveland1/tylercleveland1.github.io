@@ -9,6 +9,7 @@ $('document').ready(function() {
     var $ddlTransmission = $divSearchPage.find('#ddlTransmission');
     var $chkByOwner = $divSearchPage.find('#chkByOwner');
     var $ddlSearchArea = $divSearchPage.find('#ddlSearchArea');
+    var $chkExcludeMotorcycles = $divSearchPage.find('#chkExcludeMotorcycles');
 
     var $btnClear = $divSearchPage.find('#btnClear');
     var $btnSearchMarketplace = $divSearchPage.find('#btnSearchMarketplace');
@@ -24,6 +25,7 @@ $('document').ready(function() {
         $ddlTransmission.val(transmissionValues.All);
         $chkByOwner.prop('checked', true);
         $ddlSearchArea.val(searchArea.WestUS);
+        $chkExcludeMotorcycles.prop('checked', true);
     });
 
     // bind marketplace search
@@ -142,6 +144,10 @@ $('document').ready(function() {
             url += '&purveyor=owner';
         }
 
+        if (searchData.craigslist_excludeMotorcycles) {
+            url += '&excats=69';
+        }
+
         switch (searchData.transmission) {
             case transmissionValues.All:
                 url += '&auto_transmission=1&auto_transmission=2&auto_transmission=3'
@@ -166,6 +172,7 @@ $('document').ready(function() {
             maxOdometer: $txtMaxOdometer.val(),
             transmission: $ddlTransmission.val(),
             craigslist_byOwner: $chkByOwner.prop('checked'),
+            craigslist_excludeMotorcycles: $chkExcludeMotorcycles.prop('checked'),
             searchArea: $ddlSearchArea.val()
         }
     }

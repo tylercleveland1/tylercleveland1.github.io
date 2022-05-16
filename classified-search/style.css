@@ -33,12 +33,21 @@
 
 /* Craigslist styling */
 
+.tc-card-search #btnSearchCraigslist {
+    background-color: rgb(102, 48, 150);
+}
+
+.tc-card-search #btnSearchCraigslist:hover {
+    background-color: rgb(81, 38, 120);
+}
+
 .tc-card-search .tc-options-box-craigslist {
     position: relative;
     padding: 10px;
-    border: 2px solid black;
+    border: 2px solid rgb(102, 48, 150);
+    background-color: whitesmoke;
     border-radius: 8px;
-    width: 250px;
+    width: 230px;
     margin-top: 15px;
 }
 
@@ -48,6 +57,39 @@
     left: 20px;
     height: 20px;
     width: 190px;
-    background-color: white;
     text-align: center;
+    color: rgb(102, 48, 150);
+    background: linear-gradient(0deg, whitesmoke 0%, white 100%);
+}
+
+
+/* Marketplace styling */
+
+.tc-card-search #btnSearchMarketplace {
+    background-color: #007bff;
+}
+
+.tc-card-search #btnSearchMarketplace:hover {
+    background-color: #0062cc;
+}
+
+.tc-card-search .tc-options-box-marketplace {
+    position: relative;
+    padding: 10px;
+    border: 2px solid #007bff;
+    background-color: white;
+    border-radius: 8px;
+    width: 270px;
+    margin-top: 15px;
+}
+
+.tc-card-search .tc-options-box-marketplace .tc-options-box-title {
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    height: 20px;
+    width: 220px;
+    text-align: center;
+    color: #007bff;
+    background: white;
 }
