@@ -6,6 +6,8 @@ $('document').ready(function() {
     var $txtMaxYear = $divSearchPage.find('#txtMaxYear');
     var $txtMinOdometer = $divSearchPage.find('#txtMinOdometer');
     var $txtMaxOdometer = $divSearchPage.find('#txtMaxOdometer');
+    var $txtMinPrice = $divSearchPage.find('#txtMinPrice');
+    var $txtMaxPrice = $divSearchPage.find('#txtMaxPrice');
     var $ddlTransmission = $divSearchPage.find('#ddlTransmission');
     var $chkByOwner = $divSearchPage.find('#chkByOwner');
     var $ddlSearchArea = $divSearchPage.find('#ddlSearchArea');
@@ -24,6 +26,8 @@ $('document').ready(function() {
         $txtMaxYear.val('');
         $txtMinOdometer.val('');
         $txtMaxOdometer.val('');
+        $txtMinPrice.val('');
+        $txtMaxPrice.val('');
         $ddlTransmission.val(transmissionValues.All);
         $chkByOwner.prop('checked', true);
         $ddlSearchArea.val(searchArea.WestUS);
@@ -113,6 +117,14 @@ $('document').ready(function() {
             url += `&maxMileage=${encodeURIComponent(searchData.maxOdometer)}`
         }
 
+        if (searchData.minPrice) {
+            url += `&minPrice=${encodeURIComponent(searchData.minPrice)}`
+        }
+
+        if (searchData.maxPrice) {
+            url += `&maxPrice=${encodeURIComponent(searchData.maxPrice)}`
+        }
+
         if (searchData.transmission != transmissionValues.All) {
             switch (searchData.transmission) {
                 case transmissionValues.Manual:
@@ -152,6 +164,14 @@ $('document').ready(function() {
             url += `&max_auto_miles=${encodeURIComponent(searchData.maxOdometer)}`
         }
 
+        if (searchData.minPrice) {
+            url += `&min_price=${encodeURIComponent(searchData.minPrice)}`
+        }
+
+        if (searchData.maxPrice) {
+            url += `&max_price=${encodeURIComponent(searchData.maxPrice)}`
+        }
+
         if (searchData.craigslist_byOwner) {
             url += '&purveyor=owner';
         }
@@ -182,6 +202,8 @@ $('document').ready(function() {
             maxYear: $txtMaxYear.val(),
             minOdometer: $txtMinOdometer.val(),
             maxOdometer: $txtMaxOdometer.val(),
+            minPrice: $txtMinPrice.val(),
+            maxPrice: $txtMaxPrice.val(),
             transmission: $ddlTransmission.val(),
             craigslist_byOwner: $chkByOwner.prop('checked'),
             craigslist_excludeMotorcycles: $chkExcludeMotorcycles.prop('checked'),

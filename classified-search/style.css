@@ -18,6 +18,11 @@
     text-align: center;
 }
 
+.tc-card-search .tc-txt-price {
+    max-width: 80px;
+    text-align: center;
+}
+
 .tc-card-search .tc-ddl-trans {
     max-width: 150px;
 }
