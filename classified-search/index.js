@@ -7,6 +7,8 @@ $('document').ready(function() {
     var $txtMinOdometer = $divSearchPage.find('#txtMinOdometer');
     var $txtMaxOdometer = $divSearchPage.find('#txtMaxOdometer');
     var $ddlTransmission = $divSearchPage.find('#ddlTransmission');
+    var $chkByOwner = $divSearchPage.find('#chkByOwner');
+    var $ddlSearchArea = $divSearchPage.find('#ddlSearchArea');
 
     var $btnClear = $divSearchPage.find('#btnClear');
     var $btnSearchMarketplace = $divSearchPage.find('#btnSearchMarketplace');
@@ -20,6 +22,8 @@ $('document').ready(function() {
         $txtMinOdometer.val('');
         $txtMaxOdometer.val('');
         $ddlTransmission.val(transmissionValues.All);
+        $chkByOwner.prop('checked', true);
+        $ddlSearchArea.val(searchArea.WestUS);
     });
 
     // bind marketplace search
@@ -31,7 +35,20 @@ $('document').ready(function() {
             return;
         }
 
-        for (var templateUrl of templatedMarketplaceUrls) {
+        var targetUrls;
+        switch (searchData.searchArea) {
+            case searchArea.WestUS:
+                targetUrls = templatedMarketplaceUrls.westUS;
+                break;
+            case searchArea.CentralUS:
+                targetUrls = templatedMarketplaceUrls.centralUS;
+                break;
+            case searchArea.EastUS:
+                targetUrls = templatedMarketplaceUrls.eastUS;
+                break;
+        }
+
+        for (var templateUrl of targetUrls) {
             var url = buildMarketplaceUrl(templateUrl, searchData);
             window.open(url);
         }
@@ -46,7 +63,20 @@ $('document').ready(function() {
             return;
         }
 
-        for (var templateUrl of templatedCraigslistUrls) {
+        var targetUrls;
+        switch (searchData.searchArea) {
+            case searchArea.WestUS:
+                targetUrls = templatedCraigslistUrls.westUS;
+                break;
+            case searchArea.CentralUS:
+                targetUrls = templatedCraigslistUrls.centralUS;
+                break;
+            case searchArea.EastUS:
+                targetUrls = templatedCraigslistUrls.eastUS;
+                break;
+        }
+
+        for (var templateUrl of targetUrls) {
             var url = buildCraigslistUrl(templateUrl, searchData);
             window.open(url);
         }
@@ -108,6 +138,10 @@ $('document').ready(function() {
             url += `&max_auto_miles=${encodeURIComponent(searchData.maxOdometer)}`
         }
 
+        if (searchData.craigslist_byOwner) {
+            url += '&purveyor=owner';
+        }
+
         switch (searchData.transmission) {
             case transmissionValues.All:
                 url += '&auto_transmission=1&auto_transmission=2&auto_transmission=3'
@@ -130,7 +164,9 @@ $('document').ready(function() {
             maxYear: $txtMaxYear.val(),
             minOdometer: $txtMinOdometer.val(),
             maxOdometer: $txtMaxOdometer.val(),
-            transmission: $ddlTransmission.val()
+            transmission: $ddlTransmission.val(),
+            craigslist_byOwner: $chkByOwner.prop('checked'),
+            searchArea: $ddlSearchArea.val()
         }
     }
 });
