@@ -1,0 +1,27 @@
+.tc-card-search {
+    padding: 10px;
+    margin: 20px;
+}
+
+.tc-card-search button {
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.tc-card-search .tc-txt-year {
+    max-width: 80px;
+    text-align: center;
+}
+
+.tc-card-search .tc-txt-odo {
+    max-width: 80px;
+    text-align: center;
+}
+
+.tc-card-search .tc-ddl-trans {
+    max-width: 150px;
+}
+
+.row {
+    margin-left: 0px;
+}
