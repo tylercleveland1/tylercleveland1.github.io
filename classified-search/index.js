@@ -30,7 +30,7 @@ $('document').ready(function() {
         $txtMaxPrice.val('');
         $ddlTransmission.val(transmissionValues.All);
         $chkByOwner.prop('checked', true);
-        $ddlSearchArea.val(searchArea.WestUS);
+        $ddlSearchArea.val(searchArea.All);
         $chkExcludeMotorcycles.prop('checked', true);
         $ddlCraigslistSortOrder.val(craigslistSort.rel);
         $ddlMarketplaceSortOrder.val(marketplaceSort.bestMatch);
@@ -47,6 +47,11 @@ $('document').ready(function() {
 
         var targetUrls;
         switch (searchData.searchArea) {
+            case searchArea.All:
+                targetUrls = templatedMarketplaceUrls.westUS.concat(
+                    templatedMarketplaceUrls.centralUS,
+                    templatedMarketplaceUrls.eastUS);
+                break;
             case searchArea.WestUS:
                 targetUrls = templatedMarketplaceUrls.westUS;
                 break;
@@ -75,6 +80,11 @@ $('document').ready(function() {
 
         var targetUrls;
         switch (searchData.searchArea) {
+            case searchArea.All:
+                targetUrls = templatedCraigslistUrls.westUS.concat(
+                    templatedCraigslistUrls.centralUS,
+                    templatedCraigslistUrls.eastUS);
+                break;
             case searchArea.WestUS:
                 targetUrls = templatedCraigslistUrls.westUS;
                 break;

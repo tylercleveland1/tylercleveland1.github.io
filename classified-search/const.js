@@ -5,9 +5,10 @@ const transmissionValues = {
 };
 
 const searchArea = {
-    WestUS: '0',
-    CentralUS: '1',
-    EastUS: '2'
+    All: '0',
+    WestUS: '1',
+    CentralUS: '2',
+    EastUS: '3'
 };
 
 const craigslistSort = {
