@@ -28,9 +28,13 @@ function registerEvents(
     {
         var $this = $(this);
         
+        if ($this.hasClass("touched"))
+        {
+            $this.removeClass("touched");
+        }
         // If we click on a number and no operator is selected, select that number
         // Otherwise, merge those two into one
-        if ($operations.filter(".touched").length == 0)
+        else if ($operations.filter(".touched").length == 0)
         {
             $this.addClass("touched");
             $numbers.not($this).removeClass("touched");
