@@ -24,7 +24,7 @@ function registerEvents(
     var $numbers = $mainContent.find(".number");
     var $operations = $mainContent.find(".operation");
 
-    $mainContent.on("click touchend", ".number", function(e)
+    $mainContent.on("click touchstart", ".number", function(e)
     {
         var $this = $(this);
         
@@ -67,7 +67,7 @@ function registerEvents(
         
     });
 
-    $mainContent.on("click touchend", "#undo", function(e)
+    $mainContent.on("click touchstart", "#undo", function(e)
     {
         if (historyArray.length != 0)
         {
