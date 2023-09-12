@@ -42,7 +42,7 @@ function storeGameState(gameState)
 
 function clearGameState() 
 {
-    localStorage.removeItem("game_state");
+    localStorageProxyRemove("game_state");
 }
 
 function localStorageProxySet(name, item)
@@ -53,4 +53,9 @@ function localStorageProxySet(name, item)
 function localStorageProxyGet(name)
 {
     return localStorage.getItem("tylercleveland." + name);
+}
+
+function localStorageProxyRemove(name)
+{
+    localStorage.removeItem("tylercleveland." + name);
 }
