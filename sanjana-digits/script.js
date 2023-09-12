@@ -6,6 +6,9 @@ var tapEvent = "click";
 // array of HistoryItem
 var historyArray = [];
 
+// allow-op, if game is not completed
+var allowOp = true;
+
 $(document).ready(function() {
     var $mainContent = $("#main-content");
     $("#gameOverModal").modal('hide');
@@ -18,7 +21,6 @@ $(document).ready(function() {
     }
 
     loadGameState($mainContent);
-    checkGameEnd($mainContent);
 });
 
 function registerEvents(
@@ -45,12 +47,19 @@ function registerEvents(
         }
         else
         {
-            applyOperation(
-                $mainContent,
-                $numbers.filter(".touched").first(),
-                $this,
-                $operations.filter(".touched").first());
-
+            if (allowOp)
+            {
+                applyOperation(
+                    $mainContent,
+                    $numbers.filter(".touched").first(),
+                    $this,
+                    $operations.filter(".touched").first());
+            }
+            else
+            {
+                $numbers.removeClass("touched");
+            }
+            
             $operations.removeClass("touched");
         }
     });
@@ -136,6 +145,8 @@ function loadGameState(
 {
     $mainContent.addClass("hidden");
 
+    allowOp = true;
+
     var gameState;
     if (hasStoredGameState())
     {
@@ -164,6 +175,7 @@ function loadGameState(
     }
 
     $mainContent.removeClass("hidden");
+    checkGameEnd($mainContent);
 }
 
 function checkGameEnd($mainContent)
@@ -175,8 +187,11 @@ function checkGameEnd($mainContent)
     {
         if ($(this).text() === $target.text())
         {
+            allowOp = false;
+
             storeGameState(getGameState($mainContent));
             showGameOver();
+
             return false;
         }
     });
