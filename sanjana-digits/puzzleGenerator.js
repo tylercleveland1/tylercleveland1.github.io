@@ -73,7 +73,7 @@ function generatePuzzle()
         })
         .filter(function (item)
         {
-            return item[1] < 25;
+            return item[1] > 25 && item[1] < 75;
         })
         .map(function (item) {
             return item[0];
