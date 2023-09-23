@@ -174,6 +174,9 @@ function loadGameState(
     // load numbers and target
     $mainContent.find("#target").text(gameState.targetNumber);
 
+    // reset game history
+    historyArray = [];
+
     for (var i = 0; i < 6; i++)
     {
         $mainContent.find(`#number-pos-${i}`)
