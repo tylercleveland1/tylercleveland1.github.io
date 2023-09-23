@@ -1,10 +1,10 @@
 // None -> Puzzle
-function generatePuzzle()
+function generatePuzzle(seedString)
 {
     /**
      * Generate a puzzle based on a target number
      * 
-     * First, 6 base numbers are generated
+     * First, 6 base numbers are generated (must be < 50 == min puzzle end value)
      *      1 number is generated from the range 1-10 incl.
      *      3 numbers are generated from the range 1-25 incl.
      *      1 numbers are generated from the range 10-25 incl.
@@ -15,6 +15,8 @@ function generatePuzzle()
      * operations, since those are difficult when thinking ahead (compared to addition,
      * or subtraction).
      */
+
+    var prng = new MersenneTwister(seedString);
 
     // fill base numbers, no duplicates
     var baseNumbers = new Set();
@@ -27,22 +29,22 @@ function generatePuzzle()
             switch (i)
             {
                 case 0:
-                    newBaseNumber = randInt(10, 45);
+                    newBaseNumber = prng.randomRanged(10, 45);
                     break;
                 case 1:
-                    newBaseNumber = randInt(10, 25);
+                    newBaseNumber = prng.randomRanged(10, 25);
                     break;
                 case 2:
-                    newBaseNumber = randInt(2, 25);
+                    newBaseNumber = prng.randomRanged(2, 25);
                     break;
                 case 3:
-                    newBaseNumber = randInt(2, 25);
+                    newBaseNumber = prng.randomRanged(2, 25);
                     break;
                 case 4:
-                    newBaseNumber = randInt(2, 25);
+                    newBaseNumber = prng.randomRanged(2, 25);
                     break;
                 case 5:
-                    newBaseNumber = randInt(2, 10);
+                    newBaseNumber = prng.randomRanged(2, 10);
                     break;
             }
         }
@@ -78,7 +80,8 @@ function generatePuzzle()
         .map(function (item) {
             return item[0];
         });
-    var target = targetsWithFewPaths[Math.floor(Math.random() * targetsWithFewPaths.length)];
+
+    var target = targetsWithFewPaths[Math.floor(prng.random() * targetsWithFewPaths.length)];
 
     // Return a random result
     console.log(
@@ -105,7 +108,8 @@ function generateOperationChainRecursive(
         // Only save a result if the end result is greater than 50
         if (currentValue > 50
             && currentOperationChain.operationCount(mathOperations.multiply.name) <= 1
-            && currentOperationChain.operationCount(mathOperations.divide.name) <= 1)
+            && currentOperationChain.operationCount(mathOperations.divide.name) <= 1
+            && currentOperationChain.operationCount(mathOperations.divideReverse.name) <= 1)
         {
             if (!resultPool[currentValue])
             {
