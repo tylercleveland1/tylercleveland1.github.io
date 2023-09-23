@@ -1,7 +1,3 @@
-// var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-// var tapEvent = isMobile ? "touchend" : "click";
-var tapEvent = "click";
-
 // history stack
 // array of HistoryItem
 var historyArray = [];
@@ -30,7 +26,7 @@ function registerEvents(
     var $numbers = $mainContent.find(".number");
     var $operations = $mainContent.find(".operation");
 
-    $mainContent.on(tapEvent, ".number", function(e)
+    $mainContent.on("click", ".number", function(e)
     {
         var $this = $(this);
         var operatorIsSelected = $operations.filter(".touched").length > 0;
@@ -71,7 +67,7 @@ function registerEvents(
         }
     });
 
-    $mainContent.on(tapEvent, ".operation", function(e)
+    $mainContent.on("click", ".operation", function(e)
     {
         var $this = $(this);
 
@@ -87,7 +83,7 @@ function registerEvents(
         
     });
 
-    $mainContent.on(tapEvent, "#undo", function(e)
+    $mainContent.on("click", "#undo", function(e)
     {
         if (historyArray.length != 0)
         {
@@ -101,7 +97,7 @@ function registerEvents(
         }
     });
 
-    $("#gameOverModal").on(tapEvent, "#btnReset", function (e)
+    $("#gameOverModal").on("click", "#btnReset", function (e)
     {
         resetAndLoadNewPuzzle($mainContent);
     });
