@@ -13,6 +13,7 @@ $(document).ready(function() {
 
     if (localStorageProxyGet("last_automatic_reset_date") != new Date().getDate())
     {
+        localStorageProxySet("games_won_daily", 0);
         clearGameState();
     }
 
@@ -157,8 +158,18 @@ function loadGameState(
     }
     else
     {
-        var puzzle = generatePuzzle();
-        localStorageProxySet("last_automatic_reset_date", new Date().getDate());
+        var dateNow = new Date();
+
+        // If it's the first game of the day, synchronize the numbers w/ prng otherwise use random
+        var seed = null;
+        if (localStorageProxyGetInt("games_won_daily") == 0)
+        {
+            // seed based on today date string (no seconds)
+            seed = getFormattedDate(dateNow);
+        }
+
+        var puzzle = generatePuzzle(seed);
+        localStorageProxySet("last_automatic_reset_date", dateNow.getDate());
         gameState = puzzleToGameState(puzzle);
         storeGameState(gameState);
     }
@@ -197,6 +208,13 @@ function checkGameEnd($mainContent)
 
             storeGameState(getGameState($mainContent));
             showGameOver();
+
+            // increment games won daily
+            var gamesWonDaily = localStorageProxyGetInt("games_won_daily") || 0;
+            gamesWonDaily++;
+            localStorageProxySet(
+                "games_won_daily",
+                gamesWonDaily);
 
             return false;
         }
