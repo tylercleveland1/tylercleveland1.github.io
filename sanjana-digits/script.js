@@ -33,34 +33,41 @@ function registerEvents(
     $mainContent.on(tapEvent, ".number", function(e)
     {
         var $this = $(this);
+        var operatorIsSelected = $operations.filter(".touched").length > 0;
         
         if ($this.hasClass("touched"))
         {
-            $this.removeClass("touched");
-        }
-        // If we click on a number and no operator is selected, select that number
-        // Otherwise, merge those two into one
-        else if ($operations.filter(".touched").length == 0)
-        {
-            $this.addClass("touched");
-            $numbers.not($this).removeClass("touched");
+            if (!operatorIsSelected)
+            {
+                $this.removeClass("touched");
+            }
         }
         else
         {
-            if (allowOp)
+            // If we click on a number and no operator is selected, select only that number
+            // Otherwise, merge those two into one
+            if (!operatorIsSelected)
             {
-                applyOperation(
-                    $mainContent,
-                    $numbers.filter(".touched").first(),
-                    $this,
-                    $operations.filter(".touched").first());
+                $this.addClass("touched");
+                $numbers.not($this).removeClass("touched");
             }
             else
             {
-                $numbers.removeClass("touched");
+                if (allowOp)
+                {
+                    applyOperation(
+                        $mainContent,
+                        $numbers.filter(".touched").first(),
+                        $this,
+                        $operations.filter(".touched").first());
+                }
+                else
+                {
+                    $numbers.removeClass("touched");
+                }
+                
+                $operations.removeClass("touched");
             }
-            
-            $operations.removeClass("touched");
         }
     });
 
