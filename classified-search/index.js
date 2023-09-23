@@ -202,7 +202,7 @@ $('document').ready(function() {
                 break;
         }
 
-        return url;
+        return url + "#search=1~gallery~0~0";
     }
 
     function getSearchData() {

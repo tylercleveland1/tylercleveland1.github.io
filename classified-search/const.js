@@ -31,13 +31,13 @@ const sortOrderTemplateValue = "_SORTORDER_";
 
 const templatedCraigslistUrls = {
     westUS: [
-        'https://logan.craigslist.org/search/howell-ut/sss?lat=41.8386&lon=-112.3943&purveyor=owner&query=_QUERYSTRING_&search_distance=860&sort=_SORTORDER_#search=1~gallery~0~0',
+        'https://logan.craigslist.org/search/howell-ut/sss?lat=41.8386&lon=-112.3943&purveyor=owner&query=_QUERYSTRING_&search_distance=860&sort=_SORTORDER_',
     ],
     centralUS: [
-        'https://grandisland.craigslist.org/search/guide-rock-ne/sss?lat=40.1312&lon=-98.2839&purveyor=owner&query=_QUERYSTRING_&search_distance=860&sort=_SORTORDER_#search=1~gallery~0~0'
+        'https://grandisland.craigslist.org/search/guide-rock-ne/sss?lat=40.1312&lon=-98.2839&purveyor=owner&query=_QUERYSTRING_&search_distance=860&sort=_SORTORDER_'
     ],
     eastUS: [
-        'https://charlottesville.craigslist.org/search/louisa-va/sss?lat=38.0079&lon=-78.056&purveyor=owner&query=_QUERYSTRING_&search_distance=860&sort=_SORTORDER_#search=1~gallery~0~0'
+        'https://charlottesville.craigslist.org/search/louisa-va/sss?lat=38.0079&lon=-78.056&purveyor=owner&query=_QUERYSTRING_&search_distance=860&sort=_SORTORDER_'
     ]
 };
 
