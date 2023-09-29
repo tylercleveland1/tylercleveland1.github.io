@@ -158,18 +158,18 @@ function loadGameState(
     }
     else
     {
-        var dateNow = new Date();
 
         // If it's the first game of the day, synchronize the numbers w/ prng otherwise use random
         var seed = null;
         if (localStorageProxyGetInt("games_won_daily") == 0)
         {
             // seed based on today date string (no seconds)
-            seed = getFormattedDate(dateNow);
+            var dateNow = new Date();
+            seed = getStringHash(getFormattedDate(dateNow));
+            localStorageProxySet("last_automatic_reset_date", dateNow.getDate());
         }
 
         var puzzle = generatePuzzle(seed);
-        localStorageProxySet("last_automatic_reset_date", dateNow.getDate());
         gameState = puzzleToGameState(puzzle);
         storeGameState(gameState);
     }

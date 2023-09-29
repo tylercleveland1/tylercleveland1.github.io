@@ -75,4 +75,13 @@ function getFormattedDate(date) {
     day = day.length > 1 ? day : '0' + day;
     
     return month + '/' + day + '/' + year;
-  }
+}
+
+function getStringHash(input) {
+    var hash = 0, len = input.length;
+    for (var i = 0; i < len; i++) {
+        hash  = ((hash << 5) - hash) + input.charCodeAt(i);
+        hash |= 0; // to 32bit integer
+    }
+    return hash;
+}

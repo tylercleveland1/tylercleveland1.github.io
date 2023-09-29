@@ -7,8 +7,7 @@ function generatePuzzle(seedString)
      * First, 6 base numbers are generated (must be < 50 == min puzzle end value)
      *      1 number is generated from the range 1-10 incl.
      *      3 numbers are generated from the range 1-25 incl.
-     *      1 numbers are generated from the range 10-25 incl.
-     *      1 numbers are generated from the range 10-45 incl.
+     *      2 numbers are generated from the range 10-25 incl.
      * Ensure no 2 base numbers are the same.
      * 
      * As a heuristic, each path must only have a max of 2 division operations or multiplication
@@ -29,17 +28,11 @@ function generatePuzzle(seedString)
             switch (i)
             {
                 case 0:
-                    newBaseNumber = prng.randomRanged(10, 45);
-                    break;
                 case 1:
                     newBaseNumber = prng.randomRanged(10, 25);
                     break;
                 case 2:
-                    newBaseNumber = prng.randomRanged(2, 25);
-                    break;
                 case 3:
-                    newBaseNumber = prng.randomRanged(2, 25);
-                    break;
                 case 4:
                     newBaseNumber = prng.randomRanged(2, 25);
                     break;
