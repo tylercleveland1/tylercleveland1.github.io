@@ -68,7 +68,7 @@ function generatePuzzle(seedString)
         })
         .filter(function (item)
         {
-            return item[1] > 25 && item[1] < 75;
+            return item[1] > 10 && item[1] < 50;
         })
         .map(function (item) {
             return item[0];
