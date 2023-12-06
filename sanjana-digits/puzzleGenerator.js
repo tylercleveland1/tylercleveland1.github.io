@@ -60,7 +60,7 @@ function generatePuzzle(seedString)
         )
     }
 
-    // Pick a random result in pool that has less than 25 available paths to solution
+    // Pick a random result in pool that has less than ? and more than ? available paths to solution
     var targetsWithFewPaths = Object.entries(resultPool)
         .map(function (item)
         {
@@ -68,7 +68,7 @@ function generatePuzzle(seedString)
         })
         .filter(function (item)
         {
-            return item[1] > 10 && item[1] < 50;
+            return item[1] > 10 && item[1] < 40;
         })
         .map(function (item) {
             return item[0];
