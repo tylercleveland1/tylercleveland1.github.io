@@ -56,15 +56,6 @@
 						</select>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label>Search Area</label>
-                    <select id="ddlSearchArea" class="form-control tc-ddl-searcharea">
-						<option selected value="0">All</option>
-						<option value="1">West US</option>
-						<option value="2">Central US</option>
-						<option value="3">East US</option>
-					</select>
-                </div>
             </form>
             <div class="row">
                 <div>
@@ -75,6 +66,15 @@
                             </div>
                             <div class="card-body" style="padding: 10px;">
                                 <form>
+                                    <div class="form-group">
+                                        <label>Craigslist Search Area</label>
+                                        <select id="ddlCraigslistSearchArea" class="form-control tc-ddl-searcharea">
+                                            <option selected value="0">All US</option>
+                                            <option value="1">West US</option>
+                                            <option value="2">Central US</option>
+                                            <option value="3">East US</option>
+                                        </select>
+                                    </div>
                                     <div class="form-group" style="margin-bottom: 0px;">
                                         <div class="form-check">
                                             <input id="chkByOwner" checked class="form-check-input" type="checkbox">
@@ -105,7 +105,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <button id="btnSearchCraigslist" class="btn btn-primary tc-btn-search">Search All Craigslist</button>
+                        <button id="btnSearchCraigslist" class="btn btn-primary tc-btn-search">Search Craigslist</button>
                     </div>
                 </div>
                 <div style="padding-left: 30px;">
@@ -116,6 +116,17 @@
                             </div>
                             <div class="card-body" style="padding: 10px;">
                                 <div class="form-group">
+                                    <div class="form-group">
+                                        <label>Marketplace Search Area</label>
+                                        <select id="ddlMarketplaceSearchArea" class="form-control tc-ddl-searcharea">
+                                            <option selected value="0">All US</option>
+                                            <option value="1">West US</option>
+                                            <option value="2">Central US</option>
+                                            <option value="3">East US</option>
+                                            <option value="4">All Europe</option>
+                                            <option value="5">UK</option>
+                                        </select>
+                                    </div>
                                     <label>Sort Order</label>
                                     <select id="ddlMarketplaceSortOrder" class="form-control tc-ddl-marketplace-sortorder">
 										<option selected value="best_match">Best Match</option>
@@ -129,7 +140,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <button id="btnSearchMarketplace" class="btn btn-primary tc-btn-search">Search All Marketplace</button>
+                        <button id="btnSearchMarketplace" class="btn btn-primary tc-btn-search">Search Marketplace</button>
                     </div>
                 </div>
             </div>

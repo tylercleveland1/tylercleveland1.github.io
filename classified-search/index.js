@@ -10,7 +10,8 @@ $('document').ready(function() {
     var $txtMaxPrice = $divSearchPage.find('#txtMaxPrice');
     var $ddlTransmission = $divSearchPage.find('#ddlTransmission');
     var $chkByOwner = $divSearchPage.find('#chkByOwner');
-    var $ddlSearchArea = $divSearchPage.find('#ddlSearchArea');
+    var $ddlMarketplaceSearchArea = $divSearchPage.find('#ddlMarketplaceSearchArea');
+    var $ddlCraiglistSearchArea = $divSearchPage.find('#ddlCraigslistSearchArea');
     var $chkExcludeMotorcycles = $divSearchPage.find('#chkExcludeMotorcycles');
     var $ddlCraigslistSortOrder = $divSearchPage.find('#ddlCraigslistSortOrder');
     var $ddlMarketplaceSortOrder = $divSearchPage.find('#ddlMarketplaceSortOrder');
@@ -30,7 +31,8 @@ $('document').ready(function() {
         $txtMaxPrice.val('');
         $ddlTransmission.val(transmissionValues.All);
         $chkByOwner.prop('checked', true);
-        $ddlSearchArea.val(searchArea.All);
+        $ddlMarketplaceSearchArea.val(marketplaceSearchArea.AllUS);
+        $ddlSearchArea.val(craigslistSearchArea.AllUS);
         $chkExcludeMotorcycles.prop('checked', true);
         $ddlCraigslistSortOrder.val(craigslistSort.rel);
         $ddlMarketplaceSortOrder.val(marketplaceSort.bestMatch);
@@ -45,22 +47,11 @@ $('document').ready(function() {
             return;
         }
 
-        var targetUrls;
-        switch (searchData.searchArea) {
-            case searchArea.All:
-                targetUrls = templatedMarketplaceUrls.westUS.concat(
-                    templatedMarketplaceUrls.centralUS,
-                    templatedMarketplaceUrls.eastUS);
-                break;
-            case searchArea.WestUS:
-                targetUrls = templatedMarketplaceUrls.westUS;
-                break;
-            case searchArea.CentralUS:
-                targetUrls = templatedMarketplaceUrls.centralUS;
-                break;
-            case searchArea.EastUS:
-                targetUrls = templatedMarketplaceUrls.eastUS;
-                break;
+        var targetUrls = templatedMarketplaceUrls[searchData.marketplaceSearchArea];
+        
+        if (!targetUrls || !targetUrls.length)
+        {
+            alert("No marketplace urls found to search");
         }
 
         for (var templateUrl of targetUrls) {
@@ -78,22 +69,11 @@ $('document').ready(function() {
             return;
         }
 
-        var targetUrls;
-        switch (searchData.searchArea) {
-            case searchArea.All:
-                targetUrls = templatedCraigslistUrls.westUS.concat(
-                    templatedCraigslistUrls.centralUS,
-                    templatedCraigslistUrls.eastUS);
-                break;
-            case searchArea.WestUS:
-                targetUrls = templatedCraigslistUrls.westUS;
-                break;
-            case searchArea.CentralUS:
-                targetUrls = templatedCraigslistUrls.centralUS;
-                break;
-            case searchArea.EastUS:
-                targetUrls = templatedCraigslistUrls.eastUS;
-                break;
+        var targetUrls = templatedCraigslistUrls[searchData.craigslistSearchArea];
+
+        if (!targetUrls || !targetUrls.length)
+        {
+            alert("No craigslist urls found to search");
         }
 
         for (var templateUrl of targetUrls) {
@@ -219,7 +199,8 @@ $('document').ready(function() {
             craigslist_excludeMotorcycles: $chkExcludeMotorcycles.prop('checked'),
             craigslist_sortOrder: $ddlCraigslistSortOrder.val(),
             marketplace_sortOrder: $ddlMarketplaceSortOrder.val(),
-            searchArea: $ddlSearchArea.val()
+            marketplaceSearchArea: $ddlMarketplaceSearchArea.val(),
+            craigslistSearchArea: $ddlCraiglistSearchArea.val()
         }
     }
 });
